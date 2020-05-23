@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.demohib.collections">
+	<class name="Car" table="CAR">
+		<id name="id" column="ID" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="java.lang.String" />
+		<property name="color" type="java.lang.String" />
+	</class>
+	<class name="Showroom" table="SHOWROOM">
+		<id name="id" column="ID">
+			<generator class="identity" />
+		</id>
+		<property name="location" column="LOCATION"/>
+		<property name="manager" column="MANAGER" />
+		<list name="cars" table="CAR" cascade="all">
+			<key column="SHOWROOM_ID"/>
+			<index column="CAR_INDEX"/>
+			<one-to-many class="Car"/>
+		</list>
+	</class>
+</hibernate-mapping>
