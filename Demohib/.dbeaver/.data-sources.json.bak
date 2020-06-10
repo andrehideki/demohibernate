@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"h2_embedded-17257ace9d1-546b997c067faf02": {
+			"provider": "generic",
+			"driver": "h2_embedded",
+			"name": "H2 Embedded - db.mv.db",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"database": "/home/hideki/Documents/Dev/Hibernate/Estudo/Demohib/data/db.mv.db",
+				"url": "jdbc:h2:/home/hideki/Documents/Dev/Hibernate/Estudo/Demohib/data/db.mv.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

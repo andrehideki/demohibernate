@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="com.demohib.association.onetoone">
+	<!-- Usando chave primaria -->
+	<class name="Carro" table="CAR_LIST">
+		<id name="id" column="CAR_ID" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" type="java.lang.String" />
+		<property name="color" type="java.lang.String" />
+		<one-to-one name="engine" class="Engine" cascade="all" />
+	</class>
+	<class name="Engine" table="ENGINE">
+		<id name="id" column="CAR_ID">
+			<generator class="foreign">
+				<param name="property">car</param>
+			</generator>
+		</id>
+		<one-to-one name="car" class="Carro" constrained="true" />
+		<property name="size" />
+		<property name="make" />
+		<property name="model" />
+	</class>
+	
+	<!-- Usando chave estrangeira -->
+	<class name="Carro2" table="CARRO_LIST2">
+		<id name="id" column="CARRO_ID">
+			<generator class="identity"/>
+		</id>
+		<property name="name" type="java.lang.String" />
+		<property name="color" type="java.lang.String" />
+		<many-to-one name="engine" class="Engine2" 
+			column="engine_id"
+			unique="true" 
+			cascade="all"/>
+	</class>
+	<class name="Engine2" table="ENGINE2">
+		<id name="id" column="CAR_ID">
+			<generator class="identity"/>
+		</id>
+		<property name="size" />
+		<property name="make" />
+		<property name="model" />
+	</class>
+	
+</hibernate-mapping>
